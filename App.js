@@ -1,21 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import Routes from './src/routes'
+import { useFonts } from 'expo-font'
+import { Ubuntu_700Bold, Ubuntu_400Regular, Ubuntu_500Medium } from '@expo-google-fonts/ubuntu'
+import Reactotron, { asyncStorage } from 'reactotron-react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+console.tron = Reactotron
+  .setAsyncStorageHandler(AsyncStorage)
+  // Your real ip address 👇
+  .configure({ host: '192.168.0.163', port: 9090 })
+  .useReactNative()
+  .use(asyncStorage({ ignore: ['secret'] }))
+  .connect()
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Ubuntu_700Bold, 
+    Ubuntu_400Regular, 
+    Ubuntu_500Medium
+  })
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <Routes />
+      <StatusBar style="light" />
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
