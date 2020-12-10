@@ -10,7 +10,7 @@ App de que consome a API do OMDB (http://www.omdbapi.com/)
  - Favoritar filmes ou remover favoritos 
  - Os favoritos são salvos offline no dispositivo, mesmo se o ususário sair os dados dos favoritos permanencem.
  
- Projeto React Native usando a SDK do expo, para rodar esse projeto vc previsa do 
+ Projeto React Native usando a SDK do expo, para rodar esse projeto vc precisa do 
   - Node
   - expo-cli
   - yarn 
